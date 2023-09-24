@@ -1,6 +1,6 @@
 package com.example.seenekaart.domain.location;
 
-import com.example.seenekaart.domain.Coordinate;
+import com.example.seenekaart.domain.coordinate.Coordinate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

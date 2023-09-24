@@ -18,4 +18,10 @@ public interface LocationMapper {
 
     List<LocationDto> toLocationDtos(List<Location> locations);
 
+
+
+    @Mapping(source = "properties.title", target = "title")
+    @Mapping(source = "properties.description", target = "description")
+    Location toLocation(LocationDto locationDto);
+
 }

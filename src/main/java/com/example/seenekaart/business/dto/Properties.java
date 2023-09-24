@@ -1,5 +1,6 @@
 package com.example.seenekaart.business.dto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,9 @@ import java.io.Serializable;
 public class Properties implements Serializable {
 
     private Integer id;
+    @NotNull
     private String title;
+    @NotNull
     private String description;
 
 }

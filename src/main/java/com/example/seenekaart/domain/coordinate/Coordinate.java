@@ -1,4 +1,4 @@
-package com.example.seenekaart.domain;
+package com.example.seenekaart.domain.coordinate;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

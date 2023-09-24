@@ -14,4 +14,12 @@ public class LocationService {
     public List<Location> findAllLocations() {
         return locationRepository.findAll();
     }
+
+    public void saveLocation(Location location) {
+        locationRepository.save(location);
+    }
+
+    public void deleteLocation(Integer locationId) {
+        locationRepository.deleteById(locationId);
+    }
 }

@@ -17,7 +17,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class LocationDto implements Serializable {
 
+    @NotNull
     private String type;
+    @NotNull
     private Geometry geometry;
+    @NotNull
     private Properties properties;
 }
