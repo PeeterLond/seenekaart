@@ -15,6 +15,10 @@ public class LocationService {
         return locationRepository.findAll();
     }
 
+    public Location getLocationBy(Integer locationId) {
+        return locationRepository.getReferenceById(locationId);
+    }
+
     public void saveLocation(Location location) {
         locationRepository.save(location);
     }

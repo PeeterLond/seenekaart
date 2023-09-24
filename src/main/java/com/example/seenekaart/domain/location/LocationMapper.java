@@ -1,6 +1,7 @@
 package com.example.seenekaart.domain.location;
 
-import com.example.seenekaart.business.dto.LocationDto;
+import com.example.seenekaart.business.dto.LocationGetDto;
+import com.example.seenekaart.business.dto.LocationPostDto;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -11,17 +12,18 @@ public interface LocationMapper {
 
     @Mapping(constant = "Feature", target = "type")
     @Mapping(constant = "Point", target = "geometry.type")
-    @Mapping(source = "id", target = "properties.id")
+    @Mapping(source = "id", target = "properties.locationId")
+    @Mapping(source = "coordinate.id", target = "properties.coordinateId")
     @Mapping(source = "title", target = "properties.title")
     @Mapping(source = "description", target = "properties.description")
-    LocationDto toLocationDto(Location location);
+    LocationGetDto toLocationDto(Location location);
 
-    List<LocationDto> toLocationDtos(List<Location> locations);
+    List<LocationGetDto> toLocationDtos(List<Location> locations);
 
 
 
     @Mapping(source = "properties.title", target = "title")
     @Mapping(source = "properties.description", target = "description")
-    Location toLocation(LocationDto locationDto);
+    Location toLocation(LocationPostDto locationPostDto);
 
 }

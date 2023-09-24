@@ -18,11 +18,13 @@ public class Coordinate {
     private Integer id;
 
     @NotNull
+    @Column(name = "longitude", nullable = false, precision = 9, scale = 6)
+    private BigDecimal longitude;
+
+    @NotNull
     @Column(name = "latitude", nullable = false, precision = 9, scale = 6)
     private BigDecimal latitude;
 
-    @NotNull
-    @Column(name = "longitude", nullable = false, precision = 9, scale = 6)
-    private BigDecimal longitude;
+
 
 }

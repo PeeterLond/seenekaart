@@ -5,8 +5,8 @@
 -- Table: coordinate
 CREATE TABLE coordinate (
     id serial  NOT NULL,
-    latitude decimal(9,6)  NOT NULL,
     longitude decimal(9,6)  NOT NULL,
+    latitude decimal(9,6)  NOT NULL,
     CONSTRAINT coordinate_pk PRIMARY KEY (id)
 );
 
