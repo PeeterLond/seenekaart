@@ -24,7 +24,7 @@ public class PositionController {
 
     @PostMapping("/location")
     @Operation(summary = "Lisab uue seene leiukoha.",
-            description = "Saates POST päringu /location rajale, salvestab uue leiukoha andmebaasi." +
+            description = "Saates POST päringu /location rajale, salvestab uue leiukoha andmebaasi. " +
                     "Ootab sisse GEOJSON formaadis request body.")
     public void addLocation(@RequestBody LocationPostDto request) {
         positionService.addLocation(request);
@@ -41,9 +41,10 @@ public class PositionController {
     @DeleteMapping("/location")
     @Operation(summary = "Kustutab seene leiukoha andmebaasist.",
             description = "Saates DELETE pärnigu /location rajale, kustutab seene leiukoha ja " +
-                    "tema koordinaadid asukoha ja koordinaatide Id järgi. Ootab sisse GEOJSON formaadis request body.")
-    public void deleteLocation(@RequestBody LocationGetDto request) {
-        positionService.deleteLocation(request);
+                    "tema koordinaadid asukoha ja koordinaatide Id järgi. " +
+                    "Ootab sisse locationId ja coordinateId parameetrid.")
+    public void deleteLocation(@RequestParam Integer locationId, @RequestParam Integer coordinateId) {
+        positionService.deleteLocation(locationId, coordinateId);
     }
 
 }

@@ -10,6 +10,7 @@ import com.example.seenekaart.domain.location.LocationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -63,9 +64,9 @@ public class PositionService {
         coordinateService.saveCoordinate(coordinate);
     }
 
-    public void deleteLocation(LocationGetDto request) {
-        coordinateService.deleteCoordinates(request.getProperties().getCoordinateId());
-        locationService.deleteLocation(request.getProperties().getLocationId());
+    public void deleteLocation(Integer locationId, Integer coordinateId) {
+        coordinateService.deleteCoordinates(coordinateId);
+        locationService.deleteLocation(locationId);
     }
 
     private static void setCoordinatesToLocationDto(List<LocationGetDto> locationGetDtos, List<Location> locations) {
