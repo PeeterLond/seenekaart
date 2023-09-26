@@ -65,8 +65,8 @@ public class PositionService {
     }
 
     public void deleteLocation(Integer locationId, Integer coordinateId) {
-        coordinateService.deleteCoordinates(coordinateId);
         locationService.deleteLocation(locationId);
+        coordinateService.deleteCoordinates(coordinateId);
     }
 
     private static void setCoordinatesToLocationDto(List<LocationGetDto> locationGetDtos, List<Location> locations) {
