@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PropertiesGet implements Serializable {
+public class PropertiesShow implements Serializable {
     @NotNull
     private Integer locationId;
     @NotNull

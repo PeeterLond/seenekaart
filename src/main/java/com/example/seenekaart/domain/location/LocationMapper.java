@@ -1,6 +1,6 @@
 package com.example.seenekaart.domain.location;
 
-import com.example.seenekaart.business.dto.LocationGetDto;
+import com.example.seenekaart.business.dto.LocationShowDto;
 import com.example.seenekaart.business.dto.LocationPostDto;
 import org.mapstruct.*;
 
@@ -16,10 +16,9 @@ public interface LocationMapper {
     @Mapping(source = "coordinate.id", target = "properties.coordinateId")
     @Mapping(source = "title", target = "properties.title")
     @Mapping(source = "description", target = "properties.description")
-    LocationGetDto toLocationDto(Location location);
+    LocationShowDto toLocationDto(Location location);
 
-    List<LocationGetDto> toLocationDtos(List<Location> locations);
-
+    List<LocationShowDto> toLocationDtos(List<Location> locations);
 
 
     @Mapping(source = "properties.title", target = "title")

@@ -1,6 +1,5 @@
 package com.example.seenekaart.business.dto;
 
-
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

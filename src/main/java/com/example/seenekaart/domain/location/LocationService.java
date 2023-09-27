@@ -1,9 +1,12 @@
 package com.example.seenekaart.domain.location;
 
+import com.example.seenekaart.infrastructure.exception.DataNotFoundException;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.example.seenekaart.validation.Error.NO_LOCATIONS;
 
 @Service
 public class LocationService {
@@ -12,7 +15,11 @@ public class LocationService {
     private LocationRepository locationRepository;
 
     public List<Location> findAllLocations() {
-        return locationRepository.findAll();
+        List<Location> locations = locationRepository.findAll();
+        if (locations.isEmpty()) {
+            throw new DataNotFoundException(NO_LOCATIONS.getMessage(), NO_LOCATIONS.getErrorCode());
+        }
+        return locations;
     }
 
     public Location getLocationBy(Integer locationId) {

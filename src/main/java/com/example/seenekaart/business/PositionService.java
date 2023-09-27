@@ -1,6 +1,6 @@
 package com.example.seenekaart.business;
 
-import com.example.seenekaart.business.dto.LocationGetDto;
+import com.example.seenekaart.business.dto.LocationShowDto;
 import com.example.seenekaart.business.dto.LocationPostDto;
 import com.example.seenekaart.domain.coordinate.Coordinate;
 import com.example.seenekaart.domain.coordinate.CoordinateService;
@@ -10,7 +10,6 @@ import com.example.seenekaart.domain.location.LocationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -28,12 +27,12 @@ public class PositionService {
     private LocationMapper locationMapper;
 
 
-    public List<LocationGetDto> findAllLocations() {
+    public List<LocationShowDto> findAllLocations() {
         List<Location> locations = locationService.findAllLocations();
-        List<LocationGetDto> locationGetDtos = locationMapper.toLocationDtos(locations);
+        List<LocationShowDto> locationShowDtos = locationMapper.toLocationDtos(locations);
 
-        setCoordinatesToLocationDto(locationGetDtos, locations);
-        return locationGetDtos;
+        setCoordinatesToLocationDtos(locationShowDtos, locations);
+        return locationShowDtos;
     }
 
     @Transactional
@@ -45,7 +44,7 @@ public class PositionService {
     }
 
     @Transactional
-    public void updateLocation(LocationGetDto request) {
+    public void updateLocation(LocationShowDto request) {
         Location location = locationService.getLocationBy(request.getProperties().getLocationId());
 
         getSetAndSaveCoordinateToLocation(request);
@@ -55,26 +54,26 @@ public class PositionService {
         locationService.saveLocation(location);
     }
 
-    private void getSetAndSaveCoordinateToLocation(LocationGetDto request) {
+    public void deleteLocation(Integer locationId, Integer coordinateId) {
+        locationService.deleteLocation(locationId);
+        coordinateService.deleteCoordinates(coordinateId);
+    }
+
+    private static void setCoordinatesToLocationDtos(List<LocationShowDto> locationShowDtos, List<Location> locations) {
+        for (int i = 0; i < locationShowDtos.size(); i++) {
+            BigDecimal longitude = locations.get(i).getCoordinate().getLongitude();
+            BigDecimal latitude = locations.get(i).getCoordinate().getLatitude();
+            locationShowDtos.get(i).getGeometry().setCoordinates(new BigDecimal[]{longitude, latitude});
+        }
+    }
+
+    private void getSetAndSaveCoordinateToLocation(LocationShowDto request) {
         BigDecimal longitude = request.getGeometry().getCoordinates()[0];
         BigDecimal latitude = request.getGeometry().getCoordinates()[1];
         Coordinate coordinate = coordinateService.getCoordinateBy(request.getProperties().getCoordinateId());
         coordinate.setLongitude(longitude);
         coordinate.setLatitude(latitude);
         coordinateService.saveCoordinate(coordinate);
-    }
-
-    public void deleteLocation(Integer locationId, Integer coordinateId) {
-        locationService.deleteLocation(locationId);
-        coordinateService.deleteCoordinates(coordinateId);
-    }
-
-    private static void setCoordinatesToLocationDto(List<LocationGetDto> locationGetDtos, List<Location> locations) {
-        for (int i = 0; i < locationGetDtos.size(); i++) {
-            BigDecimal longitude = locations.get(i).getCoordinate().getLongitude();
-            BigDecimal latitude = locations.get(i).getCoordinate().getLatitude();
-            locationGetDtos.get(i).getGeometry().setCoordinates(new BigDecimal[]{longitude, latitude});
-        }
     }
 
     private void createSetAndSaveCoordinateToLocation(LocationPostDto request, Location location) {

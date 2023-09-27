@@ -3,8 +3,6 @@ package com.example.seenekaart.domain.coordinate;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-
 @Service
 public class CoordinateService {
 

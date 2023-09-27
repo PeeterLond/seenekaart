@@ -14,12 +14,12 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LocationGetDto implements Serializable {
+public class LocationShowDto implements Serializable {
 
     @NotNull
     private String type;
     @NotNull
     private Geometry geometry;
     @NotNull
-    private PropertiesGet properties;
+    private PropertiesShow properties;
 }
