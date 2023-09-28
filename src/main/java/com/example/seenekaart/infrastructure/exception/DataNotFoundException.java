@@ -1,7 +1,9 @@
 package com.example.seenekaart.infrastructure.exception;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class DataNotFoundException extends RuntimeException {
     private final String message;
