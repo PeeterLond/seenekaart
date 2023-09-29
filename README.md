@@ -13,8 +13,8 @@ Map was created using LeafLet.
 6) API documentation: http://localhost:8080/swagger-ui/index.html
 
 
-Or on IDE: 
+Or with IDE: 
 1) Clone or download project to preferred location on your computer.
 2) Install Java development kit https://www.oracle.com/java/technologies/downloads/
-3) Open project and run
+3) Open project with IDE and run
 4) API documentation: http://localhost:8080/swagger-ui/index.html
