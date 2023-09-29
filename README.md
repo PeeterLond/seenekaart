@@ -4,7 +4,7 @@ This is my project made for a work trial. It's a platform where you can add mush
 change or delete them. It has an interactive map where you can add locations and view them.
 Map was created using LeafLet.
 
-##How to run this server:
+## How to run this server:
 1) Clone or download project to preferred location on your computer.
 2) Install Java development kit https://www.oracle.com/java/technologies/downloads/
 3) Use terminal to navigate to project directory on your computer
