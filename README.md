@@ -18,3 +18,5 @@ Or with IDE:
 2) Install Java development kit https://www.oracle.com/java/technologies/downloads/
 3) Open project with IDE and run
 4) API documentation: http://localhost:8080/swagger-ui/index.html
+
+The PostgreSQL scripts to create the tables are under database/create.sql
